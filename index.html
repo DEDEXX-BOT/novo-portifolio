@@ -1,0 +1,575 @@
+<!doctype html>
+<!--
+  ============================================================================
+  index.html — ESTRUTURA do portfólio de André Matheus
+  ============================================================================
+  O projeto agora é dividido em 3 arquivos que devem ficar NA MESMA PASTA:
+
+    index.html  → a ESTRUTURA (o que existe na página: títulos, textos, botões)
+    style.css   → a APARÊNCIA (cores, tamanhos, animações, responsividade)
+    script.js   → o COMPORTAMENTO (o que acontece ao clicar, digitar, etc.)
+
+  MAPA DESTE ARQUIVO (blocos HTML):
+    A Menu   B Hero   C Sobre   D Mostruário   E Planos
+    F Modal de pré-cadastro   G Contato   H Modais dos 3 modelos
+  ============================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante acentos e símbolos corretos (ç, ã, é, ✕) -->
+  <meta charset="utf-8">
+
+  <!-- Faz a página se ajustar à tela do celular (sem isso o mobile mostra tudo minúsculo).
+       viewport-fit=cover permite usar a tela inteira em celulares com "notch" -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Título da aba do navegador e resumo mostrado em buscadores como o Google -->
+  <title>André Matheus | Portfólio</title>
+  <meta name="description" content="André Matheus, desenvolvedor front-end e web designer. Sites e landing pages modernas para pequenos negócios, com suporte e manutenção.">
+
+  <!-- Cor da barra do navegador no celular, combinando com o fundo escuro -->
+  <meta name="theme-color" content="#06040a">
+
+  <!-- Ícone da aba (favicon) embutido no próprio arquivo; evita um erro 404 no console -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f46e5'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EAM%3C/text%3E%3C/svg%3E">
+
+  <!-- Fontes do Google. preconnect "aquece" a conexão para carregar mais rápido.
+       Manrope e Inter são do portfólio; Playfair, Jost, Fraunces, Anton e DM Sans
+       são usadas só dentro dos 3 modelos de exemplo. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700;800&family=Jost:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS: toda a aparência está no arquivo style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HTML — ESTRUTURA DA PÁGINA
+       ======================================================================== -->
+
+  <!-- Os 3 círculos do brilho do cursor (decorativos; o CSS 1 estiliza, o JS 1 move).
+       aria-hidden esconde de leitores de tela, pois não têm conteúdo. -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="cursor-glow-2" aria-hidden="true"></div>
+  <div class="cursor-glow-3" aria-hidden="true"></div>
+
+  <!-- ===== A. MENU DE NAVEGAÇÃO =====
+       Cada link aponta para o id de uma seção (#sobre → <section id="sobre">). -->
+  <nav class="navegacao" aria-label="Navegação principal">
+    <ul class="menu">
+      <li><a href="#inicio" class="menu-link">Início</a></li>
+      <li><a href="#sobre" class="menu-link">Sobre</a></li>
+      <li><a href="#projetos" class="menu-link">Mostruário</a></li>
+      <li><a href="#planos" class="menu-link">Serviços</a></li>
+      <li><a href="#contato" class="menu-link">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== B. HERO / BOAS-VINDAS =====
+       Título, proposta de valor e ilustração em SVG (desenho vetorial em código). -->
+  <section id="inicio" class="hero-dunks">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Bem-vindo.</h1>
+        <p class="hero-description">
+          <strong>Transformo a presença digital da sua empresa em vendas.</strong><br><br>
+          Desenvolvedor Front-end &amp; Web Designer especializado em criar sites e landing pages modernas, de alta performance e focadas em atrair e converter clientes para o seu negócio.
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="isometric-wrapper">
+          <!-- SVG da mesa de trabalho. role="img" + aria-label descrevem o desenho
+               para leitores de tela. -->
+          <svg viewBox="0 0 800 600" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma mesa com notebook mostrando código, uma xícara de café e um celular">
+            <!-- <defs> guarda degradês reutilizáveis (referenciados por url(#id)) -->
+            <defs>
+              <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0b1329" />
+                <stop offset="100%" stop-color="#030611" />
+              </linearGradient>
+              <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2a334c" />
+                <stop offset="100%" stop-color="#121829" />
+              </linearGradient>
+              <linearGradient id="glowGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.4" />
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+              </linearGradient>
+              <radialGradient id="deskLight" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25" />
+                <stop offset="100%" stop-color="#05050f" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+
+            <!-- Luz azul difusa sobre a "mesa" -->
+            <ellipse cx="400" cy="380" rx="320" ry="160" fill="url(#deskLight)" />
+
+            <!-- Grupo central: todos os objetos são posicionados a partir deste ponto -->
+            <g transform="translate(400, 240)">
+
+              <!-- XÍCARA DE CAFÉ: sombra, alça, corpo, café e duas linhas de fumaça animadas -->
+              <g transform="translate(-160, 40)">
+                <ellipse cx="0" cy="40" rx="35" ry="18" fill="rgba(0,0,0,0.4)" />
+                <path d="M -25 0 C -45 0, -45 25, -20 25" stroke="#3b486b" stroke-width="6" fill="none"/>
+                <path d="M -20 -15 L 20 -15 L 15 30 C 15 38, -15 38, -15 30 Z" fill="#2a334c" stroke="#3b486b" stroke-width="2"/>
+                <ellipse cx="0" cy="-15" rx="20" ry="10" fill="#1a100c" />
+                <ellipse cx="0" cy="-15" rx="16" ry="7" fill="#5c3a21" />
+                <path d="M -5 -25 C -15 -40, 5 -50, -5 -65" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none" class="smoke-line" />
+                <path d="M 5 -25 C 15 -40, -5 -50, 5 -65" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none" class="smoke-line-2" />
+              </g>
+
+              <!-- SMARTPHONE: desenhado com polígonos para parecer 3D (isométrico) -->
+              <g transform="translate(130, 110)">
+                <polygon points="-10,25 50,-5 80,10 20,40" fill="rgba(0,0,0,0.4)"/>
+                <polygon points="0,0 40,-20 65,-7 25,13" fill="#1e293b"/>
+                <polygon points="0,0 25,13 25,18 0,5" fill="#0f172a"/>
+                <polygon points="25,13 65,-7 65,-2 25,18" fill="#334155"/>
+                <polygon points="4,1 38,-16 60,-5 23,10" fill="#38bdf8" opacity="0.8"/>
+                <line x1="12" y1="2" x2="25" y2="-4" stroke="#ffffff" stroke-width="2"/>
+                <line x1="15" y1="5" x2="35" y2="-5" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+              </g>
+
+              <!-- NOTEBOOK: sombra, tampa, tela, linhas de código (animadas), base e teclado -->
+              <g transform="translate(0, 0)">
+                <polygon points="-180,110 50,190 220,105 -10,25" fill="rgba(0,0,0,0.5)"/>
+                <polygon points="-120,0 40,-80 40,-180 -120,-100" fill="#151c2e"/>
+                <polygon points="-120,-100 40,-180 45,-177 -115,-97" fill="#3b486b"/>
+                <polygon points="-110,-5 30,-75 30,-170 -110,-100" fill="url(#bodyGrad)"/>
+                <polygon points="-102,-10 22,-72 22,-162 -102,-100" fill="url(#screenGrad)" stroke="#1e293b" stroke-width="1"/>
+
+                <!-- Linhas coloridas que simulam código na tela (piscam via CSS .code-lines) -->
+                <g class="code-lines">
+                  <line x1="-90" y1="-92" x2="-60" y2="-107" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="-53" y1="-110" x2="-20" y2="-126" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="-82" y1="-80" x2="-40" y2="-101" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="-82" y1="-70" x2="-55" y2="-83" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="-48" y1="-87" x2="-10" y2="-105" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="-74" y1="-59" x2="-30" y2="-80" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="-90" y1="-38" x2="-70" y2="-48" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="-90" y1="-26" x2="-40" y2="-50" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="-32" y1="-54" x2="5" y2="-72" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+                </g>
+
+                <!-- Reflexo da tela sobre o teclado (classe .tela-brilho aplica o "screen") -->
+                <polygon points="-102,-10 22,-72 110,40 -20,110" fill="url(#glowGlow)" class="tela-brilho"/>
+                <!-- Base do notebook e teclado -->
+                <polygon points="-120,0 40,-80 145,5 -15,85" fill="#1e293b"/>
+                <polygon points="-120,0 -15,85 -15,95 -120,10" fill="#0f172a"/>
+                <polygon points="-15,85 145,5 145,15 -15,95" fill="#334155"/>
+                <polygon points="-95,12 35,-53 115,8 -15,73" fill="#0b0f19"/>
+                <polygon points="10,58 45,39 60,47 25,66" fill="#273549" stroke="#3b486b" stroke-width="0.5"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== C. SOBRE MIM =====
+       Foto + texto de apresentação. A imagem abaixo é um avatar genérico (SVG
+       embutido). Para usar sua foto: troque o src por "foto.jpg" e mantenha o alt. -->
+  <section id="sobre" class="sobre">
+    <h2 class="sobre-titulo">Sobre Mim</h2>
+    <div class="sobre-caixa">
+      <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Crect width='220' height='220' fill='%23131022'/%3E%3Ccircle cx='110' cy='90' r='45' fill='%234f46e5'/%3E%3Cpath d='M 30 200 A 80 80 0 0 1 190 200 Z' fill='%237c3aed'/%3E%3C/svg%3E" alt="Foto de André Matheus" class="foto-perfil" width="220" height="220">
+
+      <p class="sobre-paragrafo">
+        Olá! Meu nome é André Matheus, sou Desenvolvedor Front-end &amp; Web Designer, focado na criação de sites e landing pages modernas, responsivas e visualmente profissionais.
+        <br><br>
+        Meu objetivo é ajudar pequenos negócios a terem uma presença mais profissional na internet, apresentando seus produtos e serviços de forma clara, atrativa e acessível para seus clientes.
+        <br><br>
+        Desenvolvo landing pages personalizadas para empresas e pequenos negócios, pensadas para destacar a identidade da marca e facilitar o contato com seus clientes. A proposta é criar uma página que reúna, de forma organizada, as principais informações do negócio, como produtos, serviços, localização, redes sociais, formas de contato e direcionamento para o WhatsApp.
+        <br><br>
+        Além da criação do site, também ofereço suporte e manutenção contínua, permitindo que o cliente solicite atualizações e ajustes sempre que precisar, mantendo o site atualizado conforme o negócio evolui.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== D. MOSTRUÁRIO DO PLANO ESSENCIAL =====
+       3 cards 3D. Cada card tem:
+         - frente (.card-front): ícone + nome do segmento
+         - verso (.card-back): descrição + botão que abre o modelo (data-abrir-projeto
+           = id do modal que será aberto; quem escuta o clique é o JS 4).
+       tabindex="0" permite focar o card com a tecla Tab. -->
+  <section id="projetos" class="projetos">
+    <h2 class="projetos-titulo">Modelos do Plano Essencial</h2>
+    <p class="projetos-subtitulo">Estes são 3 modelos exemplares criados como base. Ao contratar o Plano Essencial, adaptamos uma estrutura como essa para o seu negócio.</p>
+
+    <div class="projetos-caixa">
+
+      <!-- Card 1: Braseiro (hamburgueria) -->
+      <div class="projetos-card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-visual card-visual--brasa">
+              <svg width="70" height="70" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2c1.5 3-1 4-1 6.5 0 1.38 1.12 2.5 2.5 2.5S16 9.88 16 8.5c1.5 1.5 2 3.5 2 5.5 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-3.5 2-5 3-7.5.5-1.2 1-3 3-4.5z" stroke="#ffb020" stroke-width="1.4" fill="rgba(255,79,26,0.25)"/>
+              </svg>
+              <span class="card-visual-tag">Modelo Gastronomia</span>
+            </div>
+            <h3 class="info-projetos">Exemplo: Hamburgueria</h3>
+          </div>
+          <div class="card-back">
+            <div class="card-back-content">
+              <h3 class="info-projetos">Braseiro</h3>
+              <p class="paragrafo_projetos">Estrutura ideal para restaurantes e lanchonetes. Destaque de cardápio na primeira dobra e botão direto de pedidos no WhatsApp.</p>
+              <button type="button" class="link-projeto" data-abrir-projeto="modal-braseiro">Testar Modelo Exemplo →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Corte & Cia (barbearia) -->
+      <div class="projetos-card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-visual card-visual--barbearia">
+              <svg width="66" height="66" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="6" cy="6" r="3" stroke="#e9cd85" stroke-width="1.4"/>
+                <circle cx="6" cy="18" r="3" stroke="#e9cd85" stroke-width="1.4"/>
+                <path d="M20 4L8.5 15.5M8.5 8.5L20 20" stroke="#e9cd85" stroke-width="1.4"/>
+              </svg>
+              <span class="card-visual-tag">Modelo Serviços</span>
+            </div>
+            <h3 class="info-projetos">Exemplo: Barbearia</h3>
+          </div>
+          <div class="card-back">
+            <div class="card-back-content">
+              <h3 class="info-projetos">Corte &amp; Cia</h3>
+              <p class="paragrafo_projetos">Modelo perfeito para barbeiros e salões. Tabela de preços clara, apresentação de diferenciais e botão rápido de agendamento.</p>
+              <button type="button" class="link-projeto" data-abrir-projeto="modal-barbearia">Testar Modelo Exemplo →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Vida Ativa (clínica) -->
+      <div class="projetos-card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-visual card-visual--clinica">
+              <svg width="70" height="70" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 12h4l2-6 3 12 2-9 2 3h7" stroke="#2f4a3e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="card-visual-tag card-visual-tag--escuro">Modelo Saúde/Bem-estar</span>
+            </div>
+            <h3 class="info-projetos">Exemplo: Clínica</h3>
+          </div>
+          <div class="card-back">
+            <div class="card-back-content">
+              <h3 class="info-projetos">Vida Ativa</h3>
+              <p class="paragrafo_projetos">Estrutura pensada para profissionais da saúde e estética. Layout limpo, especialidades organizadas e chamada para consultas.</p>
+              <button type="button" class="link-projeto" data-abrir-projeto="modal-clinica">Testar Modelo Exemplo →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== E. PLANOS E SERVIÇOS =====
+       Os atributos data-nome e data-preco guardam os dados do plano; o JS 3 os
+       lê para preencher o modal e montar a mensagem do WhatsApp.
+       Para mudar um preço: altere o texto visível E o data-preco do mesmo card. -->
+  <section id="planos" class="planos">
+    <h2 class="planos-titulo">Planos e Serviços</h2>
+    <p class="planos-intro">Soluções digitais para valorizar a presença do seu negócio. Clique em um plano para destacá-lo.</p>
+
+    <div class="planos-grid">
+
+      <!-- Plano 1: Essencial -->
+      <article class="plano" id="plano-landing" data-nome="Landing Page (Plano Essencial)" data-preco="R$ 149,90">
+        <div class="plano-topo">
+          <span class="plano-tag">01 — Essencial</span>
+        </div>
+        <h3 class="plano-nome">Landing Page</h3>
+        <p class="plano-preco">R$ 149,90</p>
+        <p class="plano-descricao">Uma apresentação profissional inspirada nos nossos modelos exemplares.</p>
+
+        <ul class="plano-lista">
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Modelo pré-desenvolvido personalizado para sua marca
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Apresentação de produtos, catálogo e serviços
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Botão de contato direto pelo WhatsApp
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Pequenas alterações por 2 meses
+          </li>
+        </ul>
+
+        <button type="button" class="plano-botao">Quero este plano ↗</button>
+      </article>
+
+      <!-- Plano 2: Personalizado (já começa destacado pela classe "ativo") -->
+      <article class="plano ativo" id="plano-site" data-nome="Site Personalizado" data-preco="R$ 299,00">
+        <div class="plano-topo">
+          <span class="plano-tag">02 — Personalizado</span>
+          <span class="plano-selo">Mais completo</span>
+        </div>
+        <h3 class="plano-nome">Site Personalizado</h3>
+        <p class="plano-preco">R$ 299,00</p>
+        <p class="plano-descricao">Mais liberdade para criar uma estrutura sob medida para sua empresa.</p>
+
+        <ul class="plano-lista">
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Estrutura 100% personalizada conforme o seu projeto
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Múltiplas páginas e seções exclusivas
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Branding, identidade, logo e informações comerciais
+          </li>
+          <li>
+            <svg class="plano-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 11 15 16 9"></polyline></svg>
+            Atualizações de telefone, endereço, mídias e conteúdos
+          </li>
+        </ul>
+
+        <button type="button" class="plano-botao">Quero este plano ↗</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== F. MODAL DE PRÉ-CADASTRO DO PLANO =====
+       Começa invisível (CSS 6). O JS 3 adiciona a classe "aberto" para exibir.
+       - <form id="planoForm">: coleta nome, celular e mensagem.
+       - #planoModalOk: tela alternativa (com atributo "hidden") exibida só se o
+         navegador bloquear a abertura automática do WhatsApp. -->
+  <div class="plano-modal" id="planoModal" role="dialog" aria-modal="true" aria-labelledby="planoModalTitulo">
+    <div class="plano-modal-caixa">
+      <button type="button" class="plano-modal-fechar" id="planoModalFechar" aria-label="Fechar">&times;</button>
+      <h3 class="plano-modal-titulo" id="planoModalTitulo">Pré-cadastro</h3>
+      <p class="plano-modal-sub" id="planoModalSub">Preencha os dados para continuar no WhatsApp.</p>
+
+      <form id="planoForm" novalidate>
+        <div class="grupo-form">
+          <label class="plano-label" for="plano-nome-cliente">Seu nome</label>
+          <input class="campo-form" id="plano-nome-cliente" name="nome" type="text" autocomplete="name" minlength="2" placeholder="Digite seu nome completo" required>
+        </div>
+        <div class="grupo-form">
+          <label class="plano-label" for="plano-celular">Celular / WhatsApp</label>
+          <!-- inputmode="tel" abre o teclado numérico no celular; o JS aplica a máscara (21) 99999-9999 -->
+          <input class="campo-form" id="plano-celular" name="celular" type="tel" inputmode="tel" autocomplete="tel" maxlength="15" placeholder="(21) 99999-9999" required>
+        </div>
+        <div class="grupo-form">
+          <label class="plano-label" for="plano-mensagem">Mensagem opcional</label>
+          <textarea class="campo-form" id="plano-mensagem" name="mensagem" rows="3" placeholder="Quer tirar alguma dúvida ou contar mais sobre seu projeto?"></textarea>
+        </div>
+        <button type="submit" class="botao-form">Iniciar atendimento no WhatsApp</button>
+      </form>
+
+      <div class="plano-modal-ok" id="planoModalOk" hidden>
+        <p>Seu navegador bloqueou a abertura automática. Toque abaixo para abrir a conversa no WhatsApp.</p>
+        <a class="botao-form plano-modal-link" id="planoLinkWhats" href="#" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== G. CONTATO / REDES SOCIAIS =====
+       Links externos usam target="_blank" (nova aba) + rel="noopener noreferrer"
+       (segurança: a nova aba não consegue controlar esta). O e-mail abre o app
+       de e-mail, por isso não precisa de nova aba. -->
+  <section id="contato" class="contato">
+    <h2 class="contato-titulo">Redes Sociais</h2>
+
+    <div class="redes-sociais">
+      <a href="https://www.linkedin.com/in/andr%C3%A9-matheus-41a339299/" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+
+      <a href="mailto:andrematheuscunha@gmail.com" class="social-link email">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
+        Email
+      </a>
+
+      <a href="https://github.com/DEDEXX-BOT" target="_blank" rel="noopener noreferrer" class="social-link github">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== H. MODAIS DOS 3 MODELOS (mini-sites completos) =====
+       Ficam escondidos (display:none) até o JS 4 adicionar a classe "active".
+       O botão "Voltar ao Portfólio" usa data-fechar-projeto (sem onclick inline).
+       Dentro de cada modelo, os botões de WhatsApp são exemplos: ao vender o
+       modelo para um cliente, troque o número no link wa.me/55DDDNUMERO. -->
+
+  <!-- Modelo 1: BRASEIRO (hamburgueria) -->
+  <div id="modal-braseiro" class="project-modal" role="dialog" aria-modal="true" aria-label="Modelo de exemplo: Braseiro, hamburgueria">
+    <button type="button" class="close-project-btn" data-fechar-projeto>✕ Voltar ao Portfólio</button>
+    <div class="embed-braseiro">
+      <header class="hero">
+        <div class="eyebrow">HAMBURGUERIA ARTESANAL · NA BRASA</div>
+        <h1>PÃO, CARNE<br>E <span>FOGO</span> DE VERDADE</h1>
+        <p>Hambúrgueres 100% artesanais, grelhados no carvão, com ingredientes locais.</p>
+        <a href="https://wa.me/5521965694646" target="_blank" rel="noopener noreferrer" class="btn-primaria">Fazer Pedido no WhatsApp</a>
+      </header>
+
+      <div class="grelha"></div>
+
+      <section>
+        <div class="emb-sobre">
+          <div>
+            <div class="numero">DESDE 2019</div>
+            <h2>Feito na brasa do jeito certo.</h2>
+          </div>
+          <div>
+            <p>Começamos em uma garagem com uma grelha e uma promessa: nada de congelado, nada de atalho. Cada hambúrguer é montado na hora, com pão local e carne moída na casa todos os dias.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="grelha"></div>
+
+      <section>
+        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 2rem;">Cardápio em Destaque</h2>
+        <div class="cardapio">
+          <div class="item">
+            <div class="item-linha">
+              <h3>Braseiro Clássico</h3>
+              <span class="preco">R$ 28</span>
+            </div>
+            <p>Blend 180g grelhado na brasa, queijo prato, cebola caramelizada e molho da casa.</p>
+          </div>
+          <div class="item">
+            <div class="item-linha">
+              <h3>Duplo Bacon Defumado</h3>
+              <span class="preco">R$ 38</span>
+            </div>
+            <p>Dois smash de 120g, queijo cheddar, bacon crocante em dobro e molho barbecue.</p>
+          </div>
+          <div class="item">
+            <div class="item-linha">
+              <h3>Costela 8h</h3>
+              <span class="preco">R$ 34</span>
+            </div>
+            <p>Costela suína desfiada, defumada por 8 horas, coleslaw e molho barbecue.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modelo 2: CORTE & CIA (barbearia) -->
+  <div id="modal-barbearia" class="project-modal" role="dialog" aria-modal="true" aria-label="Modelo de exemplo: Corte e Cia, barbearia">
+    <button type="button" class="close-project-btn" data-fechar-projeto>✕ Voltar ao Portfólio</button>
+    <div class="embed-barbearia">
+      <header class="hero">
+        <div class="selo">C&amp;C</div>
+        <div class="eyebrow">Barbearia clássica desde 2015</div>
+        <h1>Tradição no corte,<br><em>precisão</em> no detalhe.</h1>
+        <p>Cortes clássicos e modernos, barba na navalha e um ambiente pensado pra você relaxar.</p>
+        <a href="https://wa.me/5521965694646" target="_blank" rel="noopener noreferrer" class="btn-primaria">Agendar Horário</a>
+      </header>
+
+      <div class="poste"></div>
+
+      <section>
+        <div class="emb-sobre">
+          <div>
+            <h2 style="font-size:2rem; margin-bottom: 1rem;">Ofício de Tradição</h2>
+            <p>A Corte &amp; Cia nasceu da vontade de trazer de volta o barbeiro de bairro — aquele que conhece seu nome, seu corte e sua história.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="poste"></div>
+
+      <section>
+        <h2 style="font-size:2.2rem; text-align:center; margin-bottom:2rem;">Serviços &amp; Tabela</h2>
+        <div>
+          <div class="servico">
+            <h3>Corte tradicional</h3>
+            <span class="preco">R$ 45</span>
+          </div>
+          <div class="servico">
+            <h3>Barba completa</h3>
+            <span class="preco">R$ 35</span>
+          </div>
+          <div class="servico">
+            <h3>Combo corte + barba</h3>
+            <span class="preco">R$ 70</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modelo 3: VIDA ATIVA (clínica de fisioterapia, com tema claro/escuro) -->
+  <div id="modal-clinica" class="project-modal" role="dialog" aria-modal="true" aria-label="Modelo de exemplo: Vida Ativa, fisioterapia">
+    <button type="button" class="close-project-btn" data-fechar-projeto>✕ Voltar ao Portfólio</button>
+    <div class="embed-clinica" id="clinica-container">
+      <button type="button" class="tema-toggle" id="btnTemaClinica" aria-label="Alternar entre tema claro e escuro">🌓</button>
+      <header class="hero">
+        <div class="respiro"></div>
+        <div class="eyebrow">Fisioterapia &amp; Bem-estar</div>
+        <h1>Seu corpo pede cuidado.<br>A gente escuta.</h1>
+        <p>Tratamento personalizado para dor, recuperação e movimento — com acompanhamento próximo.</p>
+        <a href="https://wa.me/5521965694646" target="_blank" rel="noopener noreferrer" class="btn-primaria">Agendar Avaliação</a>
+      </header>
+
+      <section>
+        <div class="emb-sobre">
+          <div>
+            <h2 style="font-size:2rem; margin-bottom:1rem;">Cuidado individualizado</h2>
+            <p>Atendemos desde reabilitação pós-cirúrgica até prevenção de lesões, com acompanhamento dedicado.</p>
+          </div>
+          <div>
+            <p>Consultas sem pressa e planos ajustados constantemente de acordo com sua evolução.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size:2.2rem; text-align:center; margin-bottom:2rem;">Especialidades</h2>
+        <div class="servicos">
+          <div class="servico-card">
+            <div class="num">01</div>
+            <h3>Ortopédica</h3>
+            <p>Recuperação de lesões e dores articulares.</p>
+          </div>
+          <div class="servico-card">
+            <div class="num">02</div>
+            <h3>Pilates Clínico</h3>
+            <p>Fortalecimento e postura supervisionada.</p>
+          </div>
+          <div class="servico-card">
+            <div class="num">03</div>
+            <h3>RPG</h3>
+            <p>Reeducação postural global para dores crônicas.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       JAVASCRIPT — COMPORTAMENTO DA PÁGINA
+       ------------------------------------------------------------------------
+       Tudo roda dentro de uma função que se executa sozinha (IIFE). Isso evita
+       "poluir" o escopo global: as variáveis abaixo não colidem com outras.
+       "use strict" faz o navegador acusar erros comuns de código.
+       ======================================================================== -->
+  <!-- JS: todo o comportamento está no arquivo script.js -->
+  <script src="script.js" defer></script>
+</body>
+</html>
