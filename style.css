@@ -318,6 +318,7 @@ img { max-width: 100%; }
   margin: 0 auto 2.5rem auto;
   border-radius: 50%;
   object-fit: cover;                       /* recorta a foto sem deformar */
+  object-position: center top;             /* mantém o rosto visível */
   border: 3px solid var(--vidro);
   box-shadow: 0 0 40px rgba(79, 70, 229, 0.35);
 }
